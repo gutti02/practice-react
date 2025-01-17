@@ -1,24 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const dataArray = [
+    { name: '田中', age: 25, city: '東京' },
+    { name: '高橋', age: 30, city: '大阪' },
+    { name: '佐藤', age: 35, city: '北海道' },
+  ];
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <table className="App-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>City</th>
+          </tr>
+        </thead>
+        <tbody>
+          {dataArray.map((data, index) => (
+            <tr key={index}>
+              <td>{data.name}</td>
+              <td>{data.age}</td>
+              <td>{data.city}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
