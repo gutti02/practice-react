@@ -26,7 +26,8 @@ function App() {
       {card_num: 16, opponent_level: 11}, ]}
   ];
   const row_back_ground_color: { [key: string]: string } = {
-    none: "",
+    default: "",
+    none: "App-None",
     red: "App-CollectRed",
     green: "App-CollectGreen"
   };
@@ -86,6 +87,42 @@ function App() {
     });
   };
 
+  function calcRowBackGroundColor(rank: number, level: number, card_num: number, opponent_level: number) {
+    if( rank === 3 && have_rank.have_rank_3 === false ){
+      return row_back_ground_color.none;
+    } else if( rank === 4 && have_rank.have_rank_4 === false ){
+      return row_back_ground_color.none;
+    } else if( rank === 5 && have_rank.have_rank_5 === false ){
+      return row_back_ground_color.none;
+    }
+
+    if( level === 1 && have_fusion_level.have_fusion_level_1 === false ){
+      return row_back_ground_color.none;
+    } else if( level === 2 && have_fusion_level.have_fusion_level_2 === false ){
+      return row_back_ground_color.none;
+    } else if( level === 3 && have_fusion_level.have_fusion_level_3 === false ){
+      return row_back_ground_color.none;
+    } else if( level === 4 && have_fusion_level.have_fusion_level_4 === false ){
+      return row_back_ground_color.none;
+    } else if( level === 5 && have_fusion_level.have_fusion_level_5 === false ){
+      return row_back_ground_color.none;
+    } else if( level === 6 && have_fusion_level.have_fusion_level_6 === false ){
+      return row_back_ground_color.none;
+    }
+
+    const target_card_num_int = parseInt(target_card_num);
+    const target_level_int = parseInt(target_level);
+    if( target_card_num_int === card_num && target_level_int === opponent_level ){
+      return row_back_ground_color.red;
+    } else if( target_card_num_int === card_num ){
+      return row_back_ground_color.green;
+    } else if( target_level_int === opponent_level ){
+      return row_back_ground_color.green;
+    }
+
+    return row_back_ground_color.default;
+  };
+
   // main
   return (
     <div className="App">
@@ -102,8 +139,8 @@ function App() {
           {data_array.map((rank_array, data_array_index) => (
             <>
               {rank_array.rank_data.map((data, index) => {
-                const row_color = row_back_ground_color.none;
-                //const row_color = target_card_num %2 === 0 ? row_back_ground_color.green : row_back_ground_color.red;
+                //const row_color = row_back_ground_color.none;
+                const row_color = calcRowBackGroundColor(rank_array.rank, index+1, data.card_num, data.opponent_level);
                 return (
                   <tr>
                     <td className={row_color}>{rank_array.rank}x2</td>
