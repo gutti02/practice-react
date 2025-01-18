@@ -17,7 +17,9 @@
     "rm": "rm -rf ./docs",
     "mv": "mv build ./docs",
     "git": "git add . && git commit && git push origin main",
-    "deploy": "npm run rm && npm run build && npm run mv && npm run git"
+    "rimraf": "rimraf ./docs",
+    "deploy-linux": "npm run rm && npm run build && npm run mv && npm run git",
+    "deploy-win": "npm run rimraf && npm run build && npm run mv && npm run git"
   },
   "eslintConfig": {
     "extends": [
