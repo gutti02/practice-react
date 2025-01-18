@@ -50,9 +50,11 @@ function App() {
 
   // Event Handler
   const targetCardNumHandler = (e) => {
+    console.log(e.target.value);
     setTargetCardNum(e.target.value);
   };
   const targetLevelHandler = (e) => {
+    console.log(e.target.value);
     setTargetLevel(e.target.value);
   };
   const haveRankHandler = (e) => {
@@ -110,65 +112,102 @@ function App() {
           </thead>
           <tbody>
             <tr>
-              <td>　</td>
-              <td>　</td>
+              <td>
+                <select name="targetCardName" className="App-select" onChange={targetCardNumHandler}>
+                  <option value=""></option>
+                  <option value="7">7枚</option>
+                  <option value="8">8枚</option>
+                  <option value="9">9枚</option>
+                  <option value="10">10枚</option>
+                  <option value="11">11枚</option>
+                  <option value="12">12枚</option>
+                  <option value="13">13枚</option>
+                  <option value="14">14枚</option>
+                  <option value="15">15枚</option>
+                  <option value="16">16枚</option>
+                </select>
+              </td>
+              <td>
+                <select name="targetLevel" className="App-select" onChange={targetLevelHandler}>
+                  <option value=""></option>
+                  <option value="4">レベル4</option>
+                  <option value="5">レベル5</option>
+                  <option value="6">レベル6</option>
+                  <option value="7">レベル7</option>
+                  <option value="8">レベル8</option>
+                  <option value="9">レベル9</option>
+                  <option value="10">レベル10</option>
+                  <option value="11">レベル11</option>
+                </select>
+              </td>
             </tr>
           </tbody>
         </table>
-        <table className="App-table-select">
-          <thead>
-            <tr>
-              <th colspan="2">残っているランク</th>
-            </tr>
-          </thead>
+        <table>
           <tbody>
             <tr>
-              <td className="App-table-td-rank">ランク3</td>
-              <td><input name="have_rank_3" className="App-input-checkbox" type="checkbox" checked={have_rank.have_rank_3} onChange={haveRankHandler}/></td>
-            </tr>
-            <tr>
-              <td className="App-table-td-rank">ランク4</td>
-              <td><input name="have_rank_4" className="App-input-checkbox" type="checkbox" checked={have_rank.have_rank_4} onChange={haveRankHandler}/></td>
-            </tr>
-            <tr>
-              <td className="App-table-td-rank">ランク5</td>
-              <td><input name="have_rank_5" className="App-input-checkbox" type="checkbox" checked={have_rank.have_rank_5} onChange={haveRankHandler}/></td>
+              <td style={{verticalAlign: "top"}}>
+                <table className="App-table-select">
+                  <thead>
+                    <tr>
+                      <th colspan="2">残っているランク</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="App-table-td-rank">ランク3</td>
+                      <td><input name="have_rank_3" className="App-input-checkbox" type="checkbox" checked={have_rank.have_rank_3} onChange={haveRankHandler}/></td>
+                    </tr>
+                    <tr>
+                      <td className="App-table-td-rank">ランク4</td>
+                      <td><input name="have_rank_4" className="App-input-checkbox" type="checkbox" checked={have_rank.have_rank_4} onChange={haveRankHandler}/></td>
+                    </tr>
+                    <tr>
+                      <td className="App-table-td-rank">ランク5</td>
+                      <td><input name="have_rank_5" className="App-input-checkbox" type="checkbox" checked={have_rank.have_rank_5} onChange={haveRankHandler}/></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td style={{verticalAlign: "top"}}>
+                <table className="App-table-select">
+                  <thead>
+                    <tr>
+                      <th colspan="2">残っているレベル</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="App-table-td-level">レベル1</td>
+                      <td><input name="have_fusion_level_1" className="App-input-checkbox" type="checkbox" checked={have_fusion_level.have_fusion_level_1} onChange={haveFusionLevelHandler}/></td>
+                    </tr>
+                    <tr>
+                      <td className="App-table-td-level">レベル2</td>
+                      <td><input name="have_fusion_level_2" className="App-input-checkbox" type="checkbox" checked={have_fusion_level.have_fusion_level_2} onChange={haveFusionLevelHandler}/></td>
+                    </tr>
+                    <tr>
+                      <td className="App-table-td-level">レベル3</td>
+                      <td><input name="have_fusion_level_3" className="App-input-checkbox" type="checkbox" checked={have_fusion_level.have_fusion_level_3} onChange={haveFusionLevelHandler}/></td>
+                    </tr>
+                    <tr>
+                      <td className="App-table-td-level">レベル4</td>
+                      <td><input name="have_fusion_level_4" className="App-input-checkbox" type="checkbox" checked={have_fusion_level.have_fusion_level_4} onChange={haveFusionLevelHandler}/></td>
+                    </tr>
+                    <tr>
+                      <td className="App-table-td-level">レベル5</td>
+                      <td><input name="have_fusion_level_5" className="App-input-checkbox" type="checkbox" checked={have_fusion_level.have_fusion_level_5} onChange={haveFusionLevelHandler}/></td>
+                    </tr>
+                    <tr>
+                      <td className="App-table-td-level">レベル6</td>
+                      <td><input name="have_fusion_level_6" className="App-input-checkbox" type="checkbox" checked={have_fusion_level.have_fusion_level_6} onChange={haveFusionLevelHandler}/></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
             </tr>
           </tbody>
         </table>
-        <table className="App-table-select">
-          <thead>
-            <tr>
-              <th colspan="2">残っているレベル</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td className="App-table-td-level">レベル1</td>
-              <td><input name="have_fusion_level_1" className="App-input-checkbox" type="checkbox" checked={have_fusion_level.have_fusion_level_1} onChange={haveFusionLevelHandler}/></td>
-            </tr>
-            <tr>
-              <td className="App-table-td-level">レベル2</td>
-              <td><input name="have_fusion_level_2" className="App-input-checkbox" type="checkbox" checked={have_fusion_level.have_fusion_level_2} onChange={haveFusionLevelHandler}/></td>
-            </tr>
-            <tr>
-              <td className="App-table-td-level">レベル3</td>
-              <td><input name="have_fusion_level_3" className="App-input-checkbox" type="checkbox" checked={have_fusion_level.have_fusion_level_3} onChange={haveFusionLevelHandler}/></td>
-            </tr>
-            <tr>
-              <td className="App-table-td-level">レベル4</td>
-              <td><input name="have_fusion_level_4" className="App-input-checkbox" type="checkbox" checked={have_fusion_level.have_fusion_level_4} onChange={haveFusionLevelHandler}/></td>
-            </tr>
-            <tr>
-              <td className="App-table-td-level">レベル5</td>
-              <td><input name="have_fusion_level_5" className="App-input-checkbox" type="checkbox" checked={have_fusion_level.have_fusion_level_5} onChange={haveFusionLevelHandler}/></td>
-            </tr>
-            <tr>
-              <td className="App-table-td-level">レベル6</td>
-              <td><input name="have_fusion_level_6" className="App-input-checkbox" type="checkbox" checked={have_fusion_level.have_fusion_level_6} onChange={haveFusionLevelHandler}/></td>
-            </tr>
-          </tbody>
-        </table>
+        
     </div>
   );
 }
