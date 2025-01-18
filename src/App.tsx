@@ -2,10 +2,28 @@ import React from 'react';
 import './App.css';
 
 function App() {
-  const dataArray = [
-    { name: '田中', age: 25, city: '東京' },
-    { name: '高橋', age: 30, city: '大阪' },
-    { name: '佐藤', age: 35, city: '北海道' },
+  const data_array = [
+    {rank: 3, rank_data: [
+      {card_num:  7, opponent_level: 4}, 
+      {card_num:  8, opponent_level: 5}, 
+      {card_num:  9, opponent_level: 6}, 
+      {card_num: 10, opponent_level: 7}, 
+      {card_num: 11, opponent_level: 8}, 
+      {card_num: 12, opponent_level: 9}, ]},
+    {rank: 4, rank_data: [
+      {card_num:  9, opponent_level:  5}, 
+      {card_num: 10, opponent_level:  6}, 
+      {card_num: 11, opponent_level:  7}, 
+      {card_num: 12, opponent_level:  8}, 
+      {card_num: 13, opponent_level:  9}, 
+      {card_num: 14, opponent_level: 10}, ]},
+    {rank: 5, rank_data: [
+      {card_num: 11, opponent_level:  6}, 
+      {card_num: 12, opponent_level:  7}, 
+      {card_num: 13, opponent_level:  8}, 
+      {card_num: 14, opponent_level:  9}, 
+      {card_num: 15, opponent_level: 10}, 
+      {card_num: 16, opponent_level: 11}, ]}
   ];
 
   return (
@@ -13,18 +31,30 @@ function App() {
       <table className="App-table">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Age</th>
-            <th>City</th>
+            <th>ランク（Xモンスター）</th>
+            <th>レベル（融合）</th>
+            <th>フィールド&手札の枚数</th>
+            <th>相手モンスターレベル</th>
           </tr>
         </thead>
         <tbody>
-          {dataArray.map((data, index) => (
-            <tr key={index}>
-              <td>{data.name}</td>
-              <td>{data.age}</td>
-              <td>{data.city}</td>
-            </tr>
+          {data_array.map((rank_array, data_array_index) => (
+            <>
+              {rank_array.rank_data.map((data, index) => (
+                <tr>
+                  <td>{rank_array.rank}x2</td>
+                  <td>{index+1}</td>
+                  <td>{data.card_num}枚</td>
+                  <td>レベル{data.opponent_level}</td>
+                </tr>
+              ))}
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </>
           ))}
         </tbody>
       </table>
