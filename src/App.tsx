@@ -50,11 +50,9 @@ function App() {
 
   // Event Handler
   const targetCardNumHandler = (e) => {
-    console.log(e.target.value);
     setTargetCardNum(e.target.value);
   };
   const targetLevelHandler = (e) => {
-    console.log(e.target.value);
     setTargetLevel(e.target.value);
   };
   const haveRankHandler = (e) => {
@@ -64,6 +62,28 @@ function App() {
   const haveFusionLevelHandler = (e) => {
     const {name, checked} = e.target;
     setHaveFusionLevel({...have_fusion_level, [name]: checked});
+  };
+
+  function resetButtonClicked() {
+    const target_card_nam_select = document.getElementById("targetCardNum") as HTMLSelectElement;
+    target_card_nam_select.value="";
+    const target_level_select = document.getElementById("targetLevel") as HTMLSelectElement;
+    target_level_select.value="";
+    setTargetCardNum(0);
+    setTargetLevel(0);
+    setHaveRank({
+      have_rank_3: true,
+      have_rank_4: true, 
+      have_rank_5: true
+    });
+    setHaveFusionLevel({
+      have_fusion_level_1: true, 
+      have_fusion_level_2: true, 
+      have_fusion_level_3: true, 
+      have_fusion_level_4: true, 
+      have_fusion_level_5: true, 
+      have_fusion_level_6: true
+    });
   };
 
   // main
@@ -103,6 +123,7 @@ function App() {
           ))}
         </tbody>
       </table>
+      <button className="App-button" onClick={resetButtonClicked}>リセット</button>
       <table className="App-table-select">
           <thead>
             <tr>
@@ -113,7 +134,7 @@ function App() {
           <tbody>
             <tr>
               <td>
-                <select name="targetCardName" className="App-select" onChange={targetCardNumHandler}>
+                <select id="targetCardNum" className="App-select" onChange={targetCardNumHandler}>
                   <option value=""></option>
                   <option value="7">7枚</option>
                   <option value="8">8枚</option>
@@ -128,7 +149,7 @@ function App() {
                 </select>
               </td>
               <td>
-                <select name="targetLevel" className="App-select" onChange={targetLevelHandler}>
+                <select id="targetLevel" className="App-select" onChange={targetLevelHandler}>
                   <option value=""></option>
                   <option value="4">レベル4</option>
                   <option value="5">レベル5</option>
